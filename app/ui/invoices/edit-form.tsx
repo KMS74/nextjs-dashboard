@@ -15,7 +15,7 @@ export default function EditInvoiceForm({
   invoice,
   customers,
 }: {
-  f: InvoiceForm;
+  invoice: InvoiceForm;
   customers: CustomerField[];
 }) {
   // why use bind here? will ensure that any values passed to the Server Action are encoded.
