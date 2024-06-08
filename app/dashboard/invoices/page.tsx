@@ -1,3 +1,4 @@
+import { Metadata } from 'next';
 import Pagination from '@/app/ui/invoices/pagination';
 import Search from '@/app/ui/search';
 import Table from '@/app/ui/invoices/table';
@@ -12,6 +13,10 @@ type Props = {
     query?: string;
     page?: string;
   };
+};
+
+export const metadata: Metadata = {
+  title: 'Invoices',
 };
 
 export default async function Page({ searchParams }: Props) {
