@@ -1,6 +1,7 @@
-import { useActionState } from "react";
 'use client';
 
+import { useActionState } from 'react';
+import { useFormStatus } from 'react-dom';
 import { lusitana } from '@/app/ui/fonts';
 import {
   AtSymbolIcon,
@@ -10,7 +11,6 @@ import {
 import { ArrowRightIcon } from '@heroicons/react/20/solid';
 import { Button } from './button';
 
-import { useFormStatus } from 'react-dom';
 import { authenticate } from '@/app/lib/actions';
 
 export default function LoginForm() {
