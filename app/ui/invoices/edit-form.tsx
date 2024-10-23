@@ -1,6 +1,5 @@
 'use client';
-
-import { useFormState, useFormStatus } from 'react-dom';
+import { useActionState } from 'react';
 import { CustomerField, InvoiceForm } from '@/app/lib/definitions';
 import {
   CheckIcon,
@@ -9,7 +8,6 @@ import {
   UserCircleIcon,
 } from '@heroicons/react/24/outline';
 import Link from 'next/link';
-import { Button } from '@/app/ui/button';
 import { updateInvoice } from '@/app/lib/actions';
 import SubmitButton from './SubmitButton';
 
@@ -22,8 +20,8 @@ export default function EditInvoiceForm({
 }) {
   const updateInvoiceWithId = updateInvoice.bind(null, invoice.id);
 
-  const initialState = { message: null, errors: {} };
-  const [state, dispatch] = useFormState(updateInvoiceWithId, initialState);
+  const initialState = { message: '', errors: {} };
+  const [state, dispatch] = useActionState(updateInvoiceWithId, initialState);
 
   // why use bind here? will ensure that any values passed to the Server Action are encoded.
 

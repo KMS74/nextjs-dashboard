@@ -1,6 +1,5 @@
 'use client';
-
-import { useFormState, useFormStatus } from 'react-dom';
+import { useActionState } from "react";
 import Link from 'next/link';
 import { CustomerField } from '@/app/lib/definitions';
 import {
@@ -14,8 +13,8 @@ import { createInvoice } from '@/app/lib/actions';
 import SubmitButton from './SubmitButton';
 
 export default function Form({ customers }: { customers: CustomerField[] }) {
-  const initialState = { message: null, errors: {} };
-  const [state, dispatch] = useFormState(createInvoice, initialState);
+  const initialState = { message: '', errors: {} };
+  const [state, dispatch] = useActionState(createInvoice, initialState);
 
   return (
     <form action={dispatch}>
