@@ -9,17 +9,18 @@ import { Suspense } from 'react';
 import { fetchInvoicesPages } from '@/app/lib/data';
 
 type Props = {
-  searchParams?: {
+  searchParams?: Promise<{
     query?: string;
     page?: string;
-  };
+  }>;
 };
 
 export const metadata: Metadata = {
   title: 'Invoices',
 };
 
-export default async function Page({ searchParams }: Props) {
+export default async function Page(props: Props) {
+  const searchParams = await props.searchParams;
   const query = searchParams?.query || '';
   const currentPage = Number(searchParams?.page) || 1;
   // Fetch the total number of pages based on the query

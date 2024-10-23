@@ -5,7 +5,7 @@ import Breadcrumbs from '@/app/ui/invoices/breadcrumbs';
 import { fetchCustomers, fetchInvoiceById } from '@/app/lib/data';
 
 type Props = {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 };
 
 export const metadata: Metadata = {
@@ -13,7 +13,8 @@ export const metadata: Metadata = {
 };
 
 // page component has access to the params object which contains the id
-export default async function Page({ params }: Props) {
+export default async function Page(props: Props) {
+  const params = await props.params;
   const id = params.id;
 
   // Fetch the invoice and customers data in parallel
